@@ -23,7 +23,9 @@ const [error, setError] = useState('');
       });
       const data = await response.json();
       console.log("data", data);
-      
+      if(data.error){
+        setError(data.error);
+      }
       if (data.token) {
         // Store the token in localStorage or a state management solution
         localStorage.setItem('token', data.token);
@@ -35,8 +37,9 @@ const [error, setError] = useState('');
         // Handle login error
         console.error('Login failed:', data.error);
       }
-    } catch (error) {
-      console.error('Login error:', error);
+    } catch (error:any) {
+        setError(error.message);
+      console.error('Login error:', error.message);
     }
   };
 
