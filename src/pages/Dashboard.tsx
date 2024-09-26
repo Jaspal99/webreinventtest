@@ -51,13 +51,14 @@ const Dashboard = () => {
           <p>Loading users...</p>
         ) : (
           <ul className="space-y-3">
-            {users?.map((user: any) => (
+            {users?.map((user: any,index:number) => (
               <li key={user.id} className="flex items-center space-x-4">
-                <img
-                  src={user.avatar}
-                  alt={user.first_name}
+                <div
                   className="w-10 h-10 rounded-full"
-                />
+                
+                >
+                    {index+1}.
+                </div>
                 <div>
                   <p className="font-semibold">{`${user.first_name} ${user.last_name}`}</p>
                   <p className="text-gray-500">{user.email}</p>
